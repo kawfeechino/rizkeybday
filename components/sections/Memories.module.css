@@ -1,44 +1,53 @@
 .container {
-  padding: 2rem 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10vh 24px;
 }
 
-.grid {
+.gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
+  gap: 16px;
 }
 
-.card {
+.memoryCard {
+  position: relative;
   aspect-ratio: 3 / 4;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  transition: transform 0.2s ease;
+  border: 1px solid var(--hairline);
+  background: var(--paper);
+  transition: transform 0.3s ease;
+}
+.memoryCard:hover {
+  transform: scale(1.02);
 }
 
-.card:hover {
-  transform: scale(1.03);
-}
-
-.thumbnailVideo {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* --- Add this to the BOTTOM of the original Memories.module.css --- */
+.caption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ivory);
+  background: linear-gradient(to top, rgba(38, 35, 32, 0.75), transparent);
+}
+
+/* --- lightbox, kept from your version, re-tinted to match the palette --- */
 
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
+  inset: 0;
+  background-color: rgba(38, 35, 32, 0.85);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -69,7 +78,7 @@
   right: 0;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--ivory);
   font-size: 1.5rem;
   cursor: pointer;
 }

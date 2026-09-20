@@ -8,35 +8,6 @@
   text-align: center;
 }
 
-.photo {
-  width: 180px;
-  aspect-ratio: 4 / 5;
-  background: var(--hairline);
-  border-radius: 8px;
-  border: 1px solid var(--hairline);
-  margin-bottom: 24px;
-}
-
-.line {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin: 8px 0 0;
-}
-
-.signature {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--grey);
-  margin-top: 20px;
-}
-
-.cat {
-  margin-top: 32px;
-  opacity: 0.85;
-}
-
 .imageContainer {
   display: flex;
   justify-content: center;
@@ -51,5 +22,25 @@
   border-radius: 12px;
   object-fit: contain;
   margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Adds a subtle shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.message p:first-child {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+
+.signOff {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--grey);
+}
+
+.catContainer {
+  margin-top: 32px;
+  opacity: 0.85;
 }
