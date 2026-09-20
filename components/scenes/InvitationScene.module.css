@@ -1,0 +1,58 @@
+.scene {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8vw;
+  overflow: hidden;
+  background: var(--ivory);
+  transition: background-color 0.5s ease;
+}
+.scene.dim {
+  background: var(--charcoal);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 480px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  line-height: 1.15;
+  margin: 0;
+  text-transform: lowercase;
+  color: var(--charcoal);
+}
+.headlineLight {
+  color: var(--ivory);
+}
+
+.subline {
+  margin: -8px 0 0;
+  color: var(--grey);
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.corner {
+  position: absolute;
+  right: 6vw;
+  bottom: 8vh;
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .corner {
+    display: none;
+  }
+}

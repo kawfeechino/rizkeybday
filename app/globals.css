@@ -1,0 +1,44 @@
+:root {
+  --ivory: #F6F1E4;
+  --paper: #FBF8EF;
+  --charcoal: #262320;
+  --charcoal-soft: #5A5449;
+  --butter: #E5B94B;
+  --butter-deep: #AD7F22;
+  --sage: #7C8B5C;
+  --hairline: #E2D9C4;
+  --grey: #948C79;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+/*
+  No prefers-color-scheme override, on purpose. This is a single
+  designed experience, not adaptive UI — it should look the same
+  whether she has dark mode on or not.
+*/
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-family: var(--font-body), -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+button { font-family: inherit; }
+img, video { max-width: 100%; display: block; }
+::selection { background: var(--butter); color: var(--charcoal); }
+
+/* applied to <body> while a full-screen scene (the invitation) is active */
+body.scene-lock {
+  overflow: hidden;
+  height: 100dvh;
+}
