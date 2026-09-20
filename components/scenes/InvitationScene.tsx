@@ -49,7 +49,7 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
             <h1 className={styles.headline}>
               happy birthday,
               <br />
-              {name}
+              carina
             </h1>
             <div className={styles.buttons}>
               <Button variant="solid" onClick={handleYes}>

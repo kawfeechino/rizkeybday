@@ -1,32 +1,31 @@
 .container {
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 10vh 24px;
+}
+
+.row {
   display: flex;
-  flex-direction: column;
-  gap: 64px;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
 }
 
-.block {
-  text-align: center;
-}
-
-.label {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.6rem;
-  text-transform: lowercase;
-  margin: 0 0 20px;
+.card {
+  flex: 0 0 82%;
+  scroll-snap-align: start;
+  border: 1px solid var(--hairline);
+  background: var(--paper);
+  border-radius: 10px;
+  overflow: hidden;
+  padding-bottom: 18px;
 }
 
 .imageWrapper {
-  max-width: 360px;
   aspect-ratio: 4 / 5;
-  margin: 0 auto;
-  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--hairline);
-  background: var(--paper);
 }
 
 .image {
@@ -34,11 +33,42 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
+}
+.card:hover .image {
+  transform: scale(1.03);
 }
 
-.text {
-  margin: 16px 0 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin: 16px 20px 4px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-transform: lowercase;
+  margin: 0 20px 6px;
+}
+
+.detail {
+  font-size: 0.92rem;
   color: var(--charcoal-soft);
+  margin: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .row {
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  .card {
+    flex: 1 1 0;
+  }
+  .cardOffset {
+    margin-top: 28px;
+  }
 }

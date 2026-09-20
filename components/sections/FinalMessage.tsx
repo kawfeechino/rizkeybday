@@ -9,7 +9,7 @@ export function FinalMessage() {
       </div>
 
       <div className={styles.message}>
-        <p>Happy birthday. I love you.</p>
+        <p>Happies of Birthdays, mi amor~ je t'aime.</p>
         <p className={styles.signOff}>— Kyle</p>
       </div>
 
