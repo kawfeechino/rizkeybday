@@ -7,11 +7,11 @@ import styles from './Memories.module.css';
 // TODO: swap these for shorter, more personal captions when you have a
 // moment — three to six words works best (e.g. "one of my favorites").
 const MEMORIES = [
-  { id: 1, src: '/pb1.MP4', caption: 'Memory 1' },
-  { id: 2, src: '/pb2.MP4', caption: 'Memory 2' },
-  { id: 3, src: '/pb3.MP4', caption: 'Memory 3' },
-  { id: 4, src: '/pb4.mp4', caption: 'Memory 4' },
-  { id: 5, src: '/gradpb.mp4', caption: 'Graduation' },
+  { id: 1, src: '/pb1.MP4', caption: 'March 30, 2026' },
+  { id: 2, src: '/pb2.MP4', caption: 'April 19, 2026' },
+  { id: 3, src: '/pb3.MP4', caption: 'July 1, 2026' },
+  { id: 4, src: '/pb4.mp4', caption: 'May 15, 2026' },
+  { id: 5, src: '/gradpb.mp4', caption: 'July 15, 2026' },
 ];
 
 export function Memories() {

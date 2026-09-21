@@ -49,7 +49,7 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
             <h1 className={styles.headline}>
               happy birthday,
               <br />
-              carina
+              cariña
             </h1>
             <div className={styles.buttons}>
               <Button variant="solid" onClick={handleYes}>
@@ -71,7 +71,7 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
             transition={{ duration: DURATION.scene }}
           >
             <Cat pose="curious" />
-            <h1 className={styles.headline}>knew it.</h1>
+            <h1 className={styles.headline}>It is an honor.</h1>
           </motion.div>
         )}
 

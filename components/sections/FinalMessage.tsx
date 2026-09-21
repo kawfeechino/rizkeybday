@@ -14,7 +14,11 @@ export function FinalMessage() {
       </div>
 
       <div className={styles.catContainer}>
-        <Cat pose="sleepy" />
+        <img 
+          src="/tagaytay.gif" 
+          alt="Tagaytay" 
+          style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px' }} 
+        />
       </div>
     </section>
   );
