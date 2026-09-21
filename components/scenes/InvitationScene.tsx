@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cat } from '../characters/Cat';
 import { PetalBurst } from '../characters/PetalBurst';
+import { LetterOpen } from '../characters/LetterOpen';
 import { Button } from '../ui/Button';
 import { DURATION } from '@/lib/motion';
 import styles from './InvitationScene.module.css';
@@ -29,7 +30,8 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
   function handleYes() {
     setStep('yes');
     setBurstKey((k) => k + 1);
-    setTimeout(onContinue, 1300);
+    // give the letter-opening animation room to finish before moving on
+    setTimeout(onContinue, 2400);
   }
 
   return (
@@ -46,6 +48,8 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: DURATION.scene, delay: 0.3 }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/smiski%20hbd.PNG" alt="" className={styles.banner} />
             <h1 className={styles.headline}>
               happy birthday,
               <br />
@@ -65,13 +69,14 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
         {step === 'yes' && (
           <motion.div
             key="yes"
-            className={styles.panel}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            className={styles.yesPanel}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: DURATION.scene }}
           >
-            <Cat pose="curious" />
-            <h1 className={styles.headline}>It is an honor.</h1>
+            <LetterOpen image="/shinchanbouquet.png" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/smiskiconfetti.PNG" alt="" className={styles.cheer} />
           </motion.div>
         )}
 

@@ -7,127 +7,60 @@ import styles from './PetalBurst.module.css';
 
 interface Petal {
   id: number;
-  left: number;
+  side: 'left' | 'right';
+  y: number;
   dx: number;
+  dy: number;
   rot: number;
   delay: number;
   color: string;
 }
 
-type TulipSide = 'left' | 'right';
-
-function TulipGraphic() {
-  return (
-    <svg
-      className={styles.tulipGraphic}
-      viewBox="0 0 180 240"
-      aria-hidden="true"
-    >
-      {/* stem */}
-      <path
-        d="M88 112 C88 148 84 184 82 222"
-        fill="none"
-        stroke="var(--sage)"
-        strokeWidth="8"
-        strokeLinecap="round"
-      />
-
-      {/* left leaf */}
-      <path
-        d="M84 172 C53 151 31 157 24 183 C48 187 69 184 84 172Z"
-        fill="var(--sage)"
-      />
-
-      {/* right leaf */}
-      <path
-        d="M84 191 C109 166 132 168 146 190 C121 199 101 201 84 191Z"
-        fill="var(--sage)"
-      />
-
-      {/* main tulip */}
-      <path
-        d="M47 95 C40 61 55 32 75 21 C78 47 87 61 90 70 C94 53 106 36 130 24 C138 56 130 86 107 105 C94 116 65 113 47 95Z"
-        fill="var(--butter)"
-      />
-
-      {/* left petal */}
-      <path
-        d="M47 95 C43 78 45 58 54 43 C62 57 72 66 90 70 C88 91 74 103 58 106 C54 104 50 100 47 95Z"
-        fill="#E9C94F"
-      />
-
-      {/* right petal */}
-      <path
-        d="M90 70 C94 52 106 35 130 24 C136 48 130 74 116 92 C108 101 99 106 89 107 C89 93 90 82 90 70Z"
-        fill="#F2D66F"
-      />
-    </svg>
-  );
-}
-
+/**
+ * Petals fly in from both edges of the screen rather than falling from a
+ * center point — a wider sweep, bigger shapes. Same asset reused for the
+ * yes click and (later) the video unlock.
+ */
 export function PetalBurst({ trigger }: { trigger: number }) {
   const [petals, setPetals] = useState<Petal[]>([]);
-  const [showTulip, setShowTulip] = useState(false);
-  const [tulipSide, setTulipSide] = useState<TulipSide>('right');
-
   const reduced = useReducedMotion();
 
   useEffect(() => {
     if (!trigger || reduced) return;
-
     const colors = ['var(--butter)', 'var(--sage)'];
-
-    // Alternate sides every trigger so the animation feels less repetitive.
-    const side: TulipSide = trigger % 2 === 0 ? 'left' : 'right';
-
-    const next: Petal[] = Array.from({ length: 18 }, (_, i) => ({
-      id: trigger * 100 + i,
-      left: 40 + Math.random() * 20,
-      dx: Math.random() * 220 - 110,
-      rot: Math.random() * 360,
-      delay: Math.random() * 0.2,
-      color: colors[i % colors.length],
-    }));
-
-    setTulipSide(side);
-    setShowTulip(true);
+    const next: Petal[] = Array.from({ length: 18 }, (_, i) => {
+      const side: 'left' | 'right' = i % 2 === 0 ? 'left' : 'right';
+      const travel = 140 + Math.random() * 220;
+      return {
+        id: trigger * 1000 + i,
+        side,
+        y: 8 + Math.random() * 78,
+        dx: side === 'left' ? travel : -travel,
+        dy: -60 + Math.random() * 200,
+        rot: Math.random() * 360,
+        delay: Math.random() * 0.25,
+        color: colors[i % colors.length],
+      };
+    });
     setPetals(next);
-
-    // Keep everything alive long enough for the full entrance + exit.
-    const timeout = setTimeout(() => {
-      setShowTulip(false);
-      setPetals([]);
-    }, 2500);
-
-    return () => clearTimeout(timeout);
+    const t = setTimeout(() => setPetals([]), 1700);
+    return () => clearTimeout(t);
   }, [trigger, reduced]);
 
   return (
     <div className={styles.host} aria-hidden="true">
-      {showTulip && (
-        <div
-          key={`tulip-${trigger}`}
-          className={`${styles.tulipWrap} ${
-            tulipSide === 'left'
-              ? styles.fromLeft
-              : styles.fromRight
-          }`}
-        >
-          <TulipGraphic />
-        </div>
-      )}
-
-      {petals.map((petal) => (
+      {petals.map((p) => (
         <span
-          key={petal.id}
-          className={styles.petal}
+          key={p.id}
+          className={`${styles.petal} ${p.side === 'left' ? styles.fromLeft : styles.fromRight}`}
           style={
             {
-              left: `${petal.left}%`,
-              backgroundColor: petal.color,
-              animationDelay: `${petal.delay}s`,
-              '--dx': `${petal.dx}px`,
-              '--rot': `${petal.rot}deg`,
+              top: `${p.y}%`,
+              backgroundColor: p.color,
+              animationDelay: `${p.delay}s`,
+              '--dx': `${p.dx}px`,
+              '--dy': `${p.dy}px`,
+              '--rot': `${p.rot}deg`,
             } as CSSProperties
           }
         />

@@ -21,6 +21,12 @@
   max-width: 480px;
 }
 
+.banner {
+  width: 84px;
+  height: auto;
+  transform: rotate(-4deg);
+}
+
 .headline {
   font-family: var(--font-display);
   font-weight: 500;
@@ -51,8 +57,33 @@
   opacity: 0.9;
 }
 
+.yesPanel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cheer {
+  position: absolute;
+  bottom: 8vh;
+  right: 8vw;
+  width: 64px;
+  height: auto;
+  opacity: 0.95;
+}
+
 @media (max-width: 640px) {
   .corner {
     display: none;
+  }
+  .banner {
+    width: 64px;
+  }
+  .cheer {
+    width: 48px;
+    bottom: 4vh;
+    right: 4vw;
   }
 }

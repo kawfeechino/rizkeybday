@@ -1,13 +1,14 @@
 import styles from './PersonalMessage.module.css';
 
 const LINES = [
-  'This is the quiet part before the details.',
-  'Happy birthday — I hope today feels exactly like you.',
+  'Cheers to the first of many more birthdays together, mahal. Forever grateful to be the one to receive your love. '
 ];
 
 export function PersonalMessage() {
   return (
     <section className={styles.section}>
+      <img src="/smiskimodel.PNG" alt="" className={styles.figure} />
+      <br/>
       {LINES.map((line) => (
         <p key={line} className={styles.line}>
           {line}

@@ -21,7 +21,7 @@ function formatCountdown(ms: number): string {
 
 // TODO: update this label if you change UNLOCK_AT_ISO, so the readable
 // date and the real server-side gate stay in sync.
-const UNLOCK_LABEL = 'opens oct 3 · 10:00PM';
+const UNLOCK_LABEL = 'opens oct 2 · 12:00AM';
 
 export function LockedVideo() {
   const status = useUnlockStatus();
@@ -52,12 +52,14 @@ export function LockedVideo() {
             transition={{ duration: 0.4 }}
             onClick={nudge}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/smiskisittingdown.PNG" alt="" className={styles.peek} />
             <div className={styles.glow} />
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className={styles.lock}>
               <rect x="6" y="13" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" />
               <path d="M9 13V9a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-            <h3 className={styles.heading}>something i made for you</h3>
+            <h3 className={styles.heading}>what 8 months of you felt like</h3>
             <p className={styles.countdown}>
               {status ? formatCountdown(status.msRemaining) : '—'} · {UNLOCK_LABEL}
             </p>
@@ -68,11 +70,7 @@ export function LockedVideo() {
           </motion.div>
         ) : (
           <motion.div key="unlocked" layoutId="video-card" className={styles.videoCard}>
-            <video 
-              src="/happybday.mp4" 
-              controls 
-              className={styles.birthdayVideo} 
-            />
+            <video src="/happybday.mp4" controls className={styles.video} />
             {!playing && (
               <button type="button" onClick={play} aria-label="Play video" className={styles.playButton}>
                 <span className={styles.playRing}>

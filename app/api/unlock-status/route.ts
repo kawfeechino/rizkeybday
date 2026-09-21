@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 // Asia/Manila is UTC+8 year-round (no DST observed), so a fixed offset
 // in the ISO string is reliable without needing a timezone library.
 // Set the real value via the UNLOCK_AT_ISO env var — see README.md.
-const UNLOCK_AT = process.env.UNLOCK_AT_ISO ?? '2026-10-03T22:00:00+08:00';
+const UNLOCK_AT = process.env.UNLOCK_AT_ISO ?? '2026-09-21T00:00:00+08:00';
 
 export async function GET() {
   const now = Date.now();

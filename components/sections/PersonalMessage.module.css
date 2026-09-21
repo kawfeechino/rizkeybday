@@ -8,11 +8,6 @@
   align-items: center;
 }
 
-.tulip {
-  margin-bottom: 28px;
-  opacity: 0.8;
-}
-
 .line {
   font-family: var(--font-display);
   font-style: italic;
@@ -20,4 +15,12 @@
   line-height: 1.6;
   color: var(--charcoal);
   margin: 0 0 8px;
+}
+
+.figure {
+  width: 72px;
+  height: auto;
+  margin-top: 15px;
+  opacity: 0.9;
+  transform: rotate(2deg);
 }
