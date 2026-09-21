@@ -88,7 +88,7 @@ export function InvitationScene({ name, onContinue }: InvitationSceneProps) {
             {/* Large personal photo on the right */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/darlingpic.png"
+              src="/darlingpic.PNG"
               alt=""
               className={styles.darling}
             />

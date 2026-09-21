@@ -15,7 +15,7 @@ export function FinalMessage() {
 
       <div className={styles.catContainer}>
         <img 
-          src="/tagaytay.gif" 
+          src="/tagaytay.GIF" 
           alt="Tagaytay" 
           style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '8px' }} 
         />
