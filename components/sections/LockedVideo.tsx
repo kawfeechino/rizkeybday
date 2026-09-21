@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUnlockStatus } from '@/hooks/useUnlockStatus';
 import { Cat } from '../characters/Cat';
@@ -26,9 +26,8 @@ const UNLOCK_LABEL = 'opens oct 2 · 12:00AM';
 export function LockedVideo() {
   const status = useUnlockStatus();
   const unlocked = status?.unlocked ?? false;
-  const [playing, setPlaying] = useState(false);
   const [shake, setShake] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   function nudge() {
     setShake(true);
@@ -37,7 +36,6 @@ export function LockedVideo() {
 
   function play() {
     setPlaying(true);
-    videoRef.current?.play();
   }
 
   return (
@@ -54,32 +52,84 @@ export function LockedVideo() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/smiskisittingdown.PNG" alt="" className={styles.peek} />
+
             <div className={styles.glow} />
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className={styles.lock}>
-              <rect x="6" y="13" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M9 13V9a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5" />
+
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              className={styles.lock}
+            >
+              <rect
+                x="6"
+                y="13"
+                width="16"
+                height="11"
+                rx="2"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M9 13V9a5 5 0 0 1 10 0v4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
             </svg>
-            <h3 className={styles.heading}>what 8 months of you felt like</h3>
+
+            <h3 className={styles.heading}>
+              what 8 months of you felt like
+            </h3>
+
             <p className={styles.countdown}>
-              {status ? formatCountdown(status.msRemaining) : '—'} · {UNLOCK_LABEL}
+              {status ? formatCountdown(status.msRemaining) : '—'} ·{' '}
+              {UNLOCK_LABEL}
             </p>
+
             <div className={styles.company}>
               <Cat name="carter" pose="sleepy" size={56} />
               <Cat name="charlie" pose="idle" size={56} />
             </div>
           </motion.div>
         ) : (
-          <motion.div key="unlocked" layoutId="video-card" className={styles.videoCard}>
-            <video src="/happybday.mp4" controls className={styles.video} />
-            {!playing && (
-              <button type="button" onClick={play} aria-label="Play video" className={styles.playButton}>
-                <span className={styles.playRing}>
-                  <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
-                    <path d="M5 3.5v11l10-5.5-10-5.5Z" fill="currentColor" />
-                  </svg>
-                </span>
-              </button>
-            )}
+          <motion.div
+            key="unlocked"
+            layoutId="video-card"
+            className={styles.videoCard}
+          >
+            <div className={styles.videoWrapper}>
+              <iframe
+                src="https://www.youtube.com/embed/0tCanx4QEWA"
+                title="What 8 months of you felt like"
+                className={styles.video}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+
+              {!playing && (
+                <button
+                  type="button"
+                  onClick={play}
+                  aria-label="Play video"
+                  className={styles.playButton}
+                >
+                  <span className={styles.playRing}>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 3.5v11l10-5.5-10-5.5Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

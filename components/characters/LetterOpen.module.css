@@ -1,7 +1,7 @@
 .wrap {
   position: relative;
-  width: min(300px, 78vw);
-  height: 220px;
+  width: min(440px, 90vw);
+  height: 320px;
   margin: 0 auto;
 }
 
@@ -13,19 +13,22 @@
   justify-content: center;
   color: var(--charcoal-soft);
   z-index: 1;
-  perspective: 700px;
+  perspective: 900px;
 }
+
 .body {
-  width: 86%;
+  width: 92%;
   height: auto;
 }
+
 .flap {
   position: absolute;
-  top: 22%;
-  left: 7%;
-  width: 86%;
+  top: 16%;
+  left: 4%;
+  width: 92%;
   transform-origin: top center;
 }
+
 .flapSvg {
   width: 100%;
   height: auto;
@@ -41,14 +44,16 @@
   justify-content: center;
   z-index: 2;
 }
+
 .photoCard {
-  width: 62%;
-  border-radius: 10px;
+  width: 68%;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--hairline);
   background: var(--paper);
-  box-shadow: 0 16px 32px rgba(38, 35, 32, 0.2);
+  box-shadow: 0 20px 40px rgba(38, 35, 32, 0.2);
 }
+
 .photoImg {
   display: block;
   width: 100%;
