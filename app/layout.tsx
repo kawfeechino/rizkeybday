@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Fraunces, Karla, Courier_Prime } from 'next/font/google';
 import './globals.css';
+import { MusicPlayer } from '@/components/MusicPlayer';
 
 // Three fonts, three jobs — see the design doc's "type" section.
 // next/font self-hosts these automatically: no extra network request,
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${fraunces.variable} ${karla.variable} ${courierPrime.variable}`}>
+        <MusicPlayer />
         {children}
       </body>
     </html>
